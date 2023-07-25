@@ -37,7 +37,7 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="robbyrussell"
 
 #PROMPT='%B%F{yellow}%n%f%B%F{white} 거부기%f%B%F{green}%m%f%b%F{white}:%f%B%F{white}%~%f%b$ '
-PROMPT='%B%F{blue}%n%f%B%F{green}🐢거부기%f%B%F{green}%f%B%F{blue}%~%f%b: '
+PROMPT='%B%F{blue}%n%f%B%F{green}🐢거북이%f%B%F{green}%f%B%F{blue}%~%f%b: '
 
 #export LS_COLORS="$LS_COLORS:di=01;37:fi=00;33"
 
