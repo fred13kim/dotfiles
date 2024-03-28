@@ -1,0 +1,11 @@
+#!/bin/bash
+# simple script to run matlab
+if [ $# -eq 0 ]
+then
+    #echo "USAGE: $0 (SCRIPT)"
+    #exit
+    matlab -nodesktop -nosplash
+    exit
+fi
+
+matlab -nodesktop -nosplash -r "run('$1');"

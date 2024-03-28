@@ -5,10 +5,10 @@ bind 'C-Space' send-prefix
 unbind '%'
 unbind '"'
 unbind '-'
-bind '-' splitw -v
-bind '\' splitw -h
-bind '_' splitw -vb
-bind '|' splitw -hb
+bind '-' splitw -v -c "#{pane_current_path}"
+bind '\' splitw -h -c "#{pane_current_path}"
+bind '_' splitw -vb -c "#{pane_current_path}"
+bind '|' splitw -hb -c "#{pane_current_path}"
 
 bind 'N' prev
 bind 'n' next
