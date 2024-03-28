@@ -12,3 +12,4 @@ vim.keymap.set('n', '<S-l>', '<CMD>BufferLineCycleNext<CR>')
 vim.keymap.set('n', '<S-h>', '<CMD>BufferLineCyclePrev<CR>')
 vim.keymap.set('n', 'Q', '<CMD>bp|bd#<CR>')
 
+vim.keymap.set('n', '<leader>cc', '<CMD>!make<CR>')
