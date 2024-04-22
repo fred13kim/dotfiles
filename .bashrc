@@ -54,12 +54,15 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-export PROMPT_DIRTRIM=2
+export PROMPT_DIRTRIM=1
+
+PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'
 
 if [ "$color_prompt" = yes ]; then
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u\[\033[00m\]@\[\033[01;36m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u🐢\[\033[01;32m\]거북이\[\033[01;34m\]\w\[\033[00m\]$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;97m\]\h:\[\033[00;34m\]\w\[\033[00;33m\]${PS1_CMD1}\[\033[00;33m\]\[\033[00m\]$ '
     #PS1='%B%F{blue}%n%f%B%F{green}🐢거북이%f%B%F{green}%f%B%F{blue}%~%f%b: ' { THIS IS ZSH }
+    #PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -120,7 +123,6 @@ source ~/catkin_ws/devel/setup.bash
 
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv virtualenv-init -)"
-. "$HOME/.cargo/env"
 
 # direnv
 eval "$(direnv hook bash)"
@@ -139,8 +141,11 @@ export NVM_DIR="$HOME/.nvm"
 
 # get_idf
 alias get_idf='. $HOME/repos/cooperunion/esp/esp-idf/export.sh'
-#LS_COLORS="$LS_COLORS:di=01;33"
+LS_COLORS="$LS_COLORS:di=00;34"
 xset r rate 250 100
 eval "$(direnv hook bash)"
 #set -o vi
 complete -o default java
+. "$HOME/.cargo/env"
+
+source ~/.scripts/git-prompt.sh

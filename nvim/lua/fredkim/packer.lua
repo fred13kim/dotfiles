@@ -37,8 +37,13 @@ return require('packer').startup(function(use)
   --use 'junegunn/seoul256.vim'
   --use 'shaunsingh/seoul256.nvim'
   use 'shaunsingh/nord.nvim'
+  use 'ellisonleao/gruvbox.nvim'
 
-  use 'Vonr/align.nvim'
+  use {
+      'Vonr/align.nvim',
+      branch = "v2",
+  }
+
 
 
 
@@ -55,18 +60,46 @@ return require('packer').startup(function(use)
           {'williamboman/mason.nvim'},           -- Optional
           {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},         -- Required
-    {'hrsh7th/cmp-nvim-lsp'},     -- Required
-    {'hrsh7th/cmp-buffer'},       -- Optional
-    {'hrsh7th/cmp-path'},         -- Optional
-    {'saadparwaiz1/cmp_luasnip'}, -- Optional
-    {'hrsh7th/cmp-nvim-lua'},     -- Optional
+          -- Autocompletion
+          {'hrsh7th/nvim-cmp'},         -- Required
+          {'hrsh7th/cmp-nvim-lsp'},     -- Required
+          {'hrsh7th/cmp-buffer'},       -- Optional
+          {'hrsh7th/cmp-path'},         -- Optional
+          {'saadparwaiz1/cmp_luasnip'}, -- Optional
+          {'hrsh7th/cmp-nvim-lua'},     -- Optional
 
-    -- Snippets
-    {'L3MON4D3/LuaSnip'},             -- Required
-    {'rafamadriz/friendly-snippets'}, -- Optional
+          -- Snippets
+          {'L3MON4D3/LuaSnip'},             -- Required
+          {'rafamadriz/friendly-snippets'}, -- Optional
+      }
   }
-}
-end)
+
+  use {
+      "windwp/nvim-autopairs",
+      event = "InsertEnter",
+      config = function()
+          require("nvim-autopairs").setup {}
+      end
+  }
+
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
+
+  -- install without yarn or npm
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+    use('brenoprata10/nvim-highlight-colors')
+
+
+
+  end)
 

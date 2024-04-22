@@ -3,7 +3,7 @@
 import time
 import subprocess
 import os
-from tkinter import E
+#from tkinter import E
 from pypresence import Presence
 from pathlib import Path
 
@@ -37,11 +37,12 @@ while True:
         except:
             fileLang_first, fileLang_second = fileExt, None
 
-        editingFile = "Editing " + fileName
+        editingFile = "Cooking " + fileName
         nvimScent.update(
                 details=editingFile,
-                large_image="neovim",
-                large_text="neovim",
+                #large_image="neovim",
+                large_image="https://media.tenor.com/7SE3IKEub60AAAAi/shinchan.gif",
+                large_text="shinchan",
                 small_image=fileLang_second,
                 small_text="Editing a " + fileLang_first + " file",
                 start=timeOfStart
