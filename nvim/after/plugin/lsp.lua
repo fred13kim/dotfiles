@@ -7,6 +7,10 @@ lsp.ensure_installed({
     'html',
     'emmet_ls',
     'marksman',
+    'matlab_ls',
+    'clangd',
+    'bashls',
+    'pylsp',
 })
 
 lsp.set_preferences({
@@ -28,6 +32,16 @@ require('lspconfig').emmet_ls.setup({
         },
       },
     }
+})
+
+require('lspconfig').matlab_ls.setup({
+    filetypes = {"matlab"},
+    settings = {
+        matlab = {
+            installPath = "/usr/local/MATLAB/R2024a/"
+        },
+    },
+    single_file_support = true
 })
 
 lsp.setup()

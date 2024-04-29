@@ -1,16 +1,26 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 
-telescope.setup {
-	defaults = {
-	    find_files = {
-            hidden = true
-        }
-	}
+local opts = {
+    silent = true,
 }
 
-vim.api.nvim_set_keymap('n', '<leader>pf', ':lua require"telescope.builtin".find_files({ hidden = true })<CR>', {noremap = true, silent = true})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>ps', function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end)
+telescope.setup {
+	defaults = {
+        file_ignore_patterns = {
+            '.git/',
+        },
+	},
+    pickers = {
+        find_files = {
+            hidden = true
+        }
+    },
+}
+
+vim.keymap.set('n', '<leader>pf', builtin.find_files, opts)
+vim.keymap.set('n', '<leader>pg', builtin.git_files, opts)
+vim.keymap.set('n', '<leader>pr', builtin.live_grep, opts)
+vim.keymap.set('n', '<leader>pt', builtin.treesitter, opts)
+
+telescope.load_extension "file_browser"
